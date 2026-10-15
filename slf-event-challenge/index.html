@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6657f5" />
+  <meta name="description" content="A quick, fun challenge: test your tech knowledge, general knowledge, and event-planning skills." />
+  <title>QuickQuest — Edu Expo Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="QuickQuest home"><span class="brand-mark">Q</span><span>QuickQuest</span></a>
+      <span class="top-pill"><span class="live-dot"></span> Edu Expo Challenge</span>
+    </header>
+
+    <section class="screen active" id="welcome-screen">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span>⚡</span> YOUR QUICK BRAIN BREAK</div>
+          <h1>Think fast.<br /><span class="gradient-text">Have fun.</span></h1>
+          <p class="hero-description">Take on a quick challenge with technology, general knowledge, and a final event-planning puzzle.</p>
+          <div class="feature-row">
+            <span><span class="feature-icon">💻</span> Tech</span>
+            <span><span class="feature-icon">🧠</span> General knowledge</span>
+            <span><span class="feature-icon">🎤</span> Event planning</span>
+          </div>
+          <button class="primary-button" id="start-button">Start the challenge <span>→</span></button>
+          <p class="micro-copy">About 2 minutes · No app download needed</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="floating-card card-star">✦ <small>STAY CURIOUS</small></div>
+          <div class="main-emoji">🚀</div>
+          <div class="floating-card card-score"><span class="score-spark">✧</span><div><strong>Ready?</strong><small>Let's find out!</small></div></div>
+          <div class="floating-card card-brain">🧩</div>
+        </div>
+      </div>
+      <footer class="welcome-footer"><span>Made for curious minds</span><span>01 / 03 challenge rounds</span></footer>
+    </section>
+
+    <section class="screen quiz-screen" id="quiz-screen">
+      <div class="progress-header"><div><span class="round-kicker" id="round-kicker">ROUND 1 OF 3</span><h2 id="round-title">Tech check</h2></div><div class="progress-number" id="progress-number">1 / 7</div></div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="question-card">
+        <div class="question-meta"><span class="question-category" id="question-category">💻 TECHNOLOGY</span><span class="question-points">+10 points</span></div>
+        <h3 id="question-text">Loading question…</h3>
+        <div class="answer-list" id="answer-list"></div>
+        <div class="question-footer"><span id="question-count">QUESTION 1 OF 6</span><button class="primary-button compact" id="next-button" disabled>Continue <span>→</span></button></div>
+      </div>
+      <p class="gentle-note">Go with your best answer — this is just for fun.</p>
+    </section>
+
+    <section class="screen agenda-screen" id="agenda-screen">
+      <div class="progress-header"><div><span class="round-kicker">ROUND 3 OF 3</span><h2>Put the event in order</h2></div><div class="progress-number">Agenda puzzle</div></div>
+      <div class="progress-track"><div class="progress-fill full" ></div></div>
+      <div class="question-card agenda-card">
+        <div class="question-meta"><span class="question-category">🎤 EVENT PLANNING</span><span class="question-points">Up to 30 points</span></div>
+        <h3>Imagine you're helping run an event. Can you put these moments in the right order?</h3>
+        <p class="helper-text">Use the arrows to move each item. The first item should happen first.</p>
+        <ol class="agenda-list" id="agenda-list"></ol>
+        <div class="question-footer"><span>ONE LAST CHALLENGE</span><button class="primary-button compact" id="check-agenda-button">Check order <span>→</span></button></div>
+      </div>
+      <p class="gentle-note">Tip: think about what needs to happen before the programme begins.</p>
+    </section>
+
+    <section class="screen result-screen" id="result-screen">
+      <div class="result-hero"><div class="result-confetti" aria-hidden="true">✦　✧　✦</div><div class="result-icon" id="result-icon">🏆</div><span class="round-kicker">CHALLENGE COMPLETE</span><h1 id="result-heading">Nice work!</h1><p id="result-description">You made it through all three rounds.</p><div class="score-circle"><strong id="final-score">0</strong><span>POINTS</span></div><p class="score-detail" id="score-detail">Let's see how you did.</p></div>
+      <div class="interest-card"><div class="interest-card-icon">🎯</div><div><h2>Want to help organise an event someday?</h2><p>If you'd like to hear about future event or volunteer opportunities, leave your details below. This is optional.</p></div></div>
+      <form id="interest-form" class="interest-form">
+        <label for="participant-name">Your name <span>*</span></label><input id="participant-name" name="name" type="text" placeholder="Enter your name" maxlength="80" required />
+        <label for="participant-phone">Contact number <span>*</span></label><input id="participant-phone" name="phone" type="tel" placeholder="e.g. 07X XXX XXXX" maxlength="25" required />
+        <fieldset><legend>Would you be interested in helping organise events? <span>*</span></legend><label class="radio-card"><input type="radio" name="interest" value="Yes" required /><span class="radio-dot"></span><span><strong>Yes, I'd like to know more</strong><small>Events, teamwork and volunteering</small></span></label><label class="radio-card"><input type="radio" name="interest" value="Maybe" /><span class="radio-dot"></span><span><strong>Maybe, tell me more</strong><small>I'd like to explore it</small></span></label><label class="radio-card"><input type="radio" name="interest" value="No" /><span class="radio-dot"></span><span><strong>Not right now</strong><small>I'm just here for the challenge</small></span></label></fieldset>
+        <label class="consent-row"><input type="checkbox" id="data-consent" required /><span>I agree to share these details so the organisers can contact me about event opportunities. <span>*</span></span></label>
+        <button class="primary-button submit-button" type="submit" id="submit-button">Submit my details <span>→</span></button>
+        <p class="form-note">Your details should only be used for the purpose described above. You can skip this form.</p>
+      </form>
+      <button class="text-button" id="skip-form-button">Skip and finish</button>
+    </section>
+
+    <section class="screen thankyou-screen" id="thankyou-screen"><div class="thankyou-icon">🎉</div><span class="round-kicker">ALL DONE</span><h1 id="thankyou-heading">Thanks for taking part!</h1><p id="thankyou-copy">We hope you enjoyed the challenge. Keep being curious and keep creating.</p><div class="thankyou-score"><span>Your score</span><strong id="thankyou-score">0 / 90</strong></div><button class="primary-button" id="play-again-button">Play again <span>↻</span></button><p class="micro-copy">You can close this page now.</p></section>
+    <footer class="app-footer"><span>QUICKQUEST</span><span>Curiosity looks good on you ✨</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
