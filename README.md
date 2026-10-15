@@ -37,12 +37,17 @@ Then open `http://localhost:8000`.
 
 ## Deploy with GitHub + Vercel
 
-1. Create a new GitHub repository (for example, `slf-event-challenge`).
-2. Upload all files in this folder to the repository root. Keep `index.html`, `style.css`, and `app.js` at the root; keep the Apps Script file in `api/`.
-3. Go to Vercel and sign in with GitHub.
-4. Select **Add New → Project**, import the repository, and deploy it as a static site. No framework preset or build command is required; leave the build command blank and the output directory as `.` if Vercel asks.
-5. After deployment, open the generated `vercel.app` URL on a phone and test the complete challenge and form.
-6. Generate a QR code that points to the deployed URL. Print and test the QR code using at least two different phones before the expo.
+1. Create a new GitHub repository (for example, `slf-event-challenge`) and push this project. **`index.html`, `style.css`, `app.js`, `vercel.json`, and the `api/` folder must sit at the repository root** — not inside a subfolder. (A nested subfolder is the most common cause of a Vercel 404: Vercel's Root Directory points at the repo root, so if `index.html` is one level down it finds nothing to serve.)
+2. Go to Vercel and sign in with GitHub.
+3. Select **Add New → Project** and import the repository.
+4. Configure the project:
+   - **Framework Preset:** Other (no framework).
+   - **Root Directory:** `./` (the repository root — confirm `index.html` is listed there).
+   - **Build Command:** leave blank.
+   - **Output Directory:** leave as the default (root); do not set a build output.
+5. Deploy. After it finishes, open the generated `vercel.app` URL on a phone and test the complete challenge and the form.
+6. If you still see a 404: in the Vercel dashboard check **Settings → General → Root Directory** is `./`, and under **Settings → Deployment Protection** confirm protection is off (or you are signed in) so the public QR link is reachable.
+7. Generate a QR code that points to the deployed URL. Print and test the QR code using at least two different phones before the expo.
 
 ## Before the expo
 

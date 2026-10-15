@@ -12,7 +12,7 @@ const questions = [
 const agendaCorrect = ["Registration & guest arrival", "Welcome and opening", "Guest speech", "Main activity", "Vote of thanks", "Closing" ];
 const agendaInitial = ["Main activity", "Registration & guest arrival", "Vote of thanks", "Guest speech", "Closing", "Welcome and opening"];
 const maxScore = 90;
-let questionIndex = 0, quizScore = 0, selectedAnswer = null, answered = false, agendaItems = [...agendaInitial], agendaScore = 0, totalScore = 0;
+let questionIndex = 0, quizScore = 0, selectedAnswer = null, answered = false, agendaItems = [...agendaInitial], agendaScore = 0, totalScore = 0, agendaChecked = false;
 const $ = (id) => document.getElementById(id);
 const screens = ["welcome-screen", "quiz-screen", "agenda-screen", "result-screen", "thankyou-screen"];
 function showScreen(id) { screens.forEach(s => $(s).classList.toggle("active", s === id)); window.scrollTo({ top: 0, behavior: "smooth" }); }
@@ -61,13 +61,18 @@ function finishChallenge() {
   else { $("result-icon").textContent = "🚀"; $("result-heading").textContent = "Challenge complete!"; $("result-description").textContent = "Every challenge is a chance to learn something new."; }
   showScreen("result-screen");
 }
-function resetApp() { questionIndex = 0; quizScore = 0; selectedAnswer = null; answered = false; agendaItems = [...agendaInitial]; agendaScore = 0; totalScore = 0; $("interest-form").reset(); $("submit-button").disabled = false; $("submit-button").innerHTML = 'Submit my details <span>→</span>'; renderQuestion(); renderAgenda(); showScreen("welcome-screen"); }
+function resetApp() { questionIndex = 0; quizScore = 0; selectedAnswer = null; answered = false; agendaItems = [...agendaInitial]; agendaScore = 0; totalScore = 0; agendaChecked = false; const cab = $("check-agenda-button"); cab.disabled = false; cab.innerHTML = 'Check order <span>&rarr;</span>'; $("interest-form").reset(); $("submit-button").disabled = false; $("submit-button").innerHTML = 'Submit my details <span>&rarr;</span>'; renderQuestion(); renderAgenda(); showScreen("welcome-screen"); }
 $("start-button").addEventListener("click", () => { renderQuestion(); showScreen("quiz-screen"); });
 $("next-button").addEventListener("click", () => { if (!answered) return; if (questionIndex < questions.length - 1) { questionIndex++; renderQuestion(); } else { renderAgenda(); showScreen("agenda-screen"); } });
 $("check-agenda-button").addEventListener("click", () => {
-  [...$("agenda-list").children].forEach((li, i) => li.classList.add(agendaItems[i] === agendaCorrect[i] ? "correct-position" : "wrong-position"));
-  $("check-agenda-button").disabled = true; $("check-agenda-button").innerHTML = 'See my score <span>→</span>';
-  $("check-agenda-button").onclick = () => finishChallenge();
+  if (!agendaChecked) {
+    agendaChecked = true;
+    [...$("agenda-list").children].forEach((li, i) => li.classList.add(agendaItems[i] === agendaCorrect[i] ? "correct-position" : "wrong-position"));
+    $("agenda-list").querySelectorAll(".move-button").forEach(b => b.disabled = true);
+    $("check-agenda-button").innerHTML = 'See my score <span>&rarr;</span>';
+  } else {
+    finishChallenge();
+  }
 });
 $("interest-form").addEventListener("submit", async (event) => {
   event.preventDefault();

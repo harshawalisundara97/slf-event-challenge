@@ -6,6 +6,11 @@
  * 4. Copy the Web app URL into DATA_ENDPOINT in app.js.
  */
 const SHEET_NAME = 'Challenge Responses';
+
+// Health check: visiting the /exec URL in a browser should show this, confirming the deployment is live.
+function doGet() {
+  return ContentService.createTextOutput('QuickQuest endpoint is live. Submit responses via POST.');
+}
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
