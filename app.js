@@ -1,5 +1,5 @@
 /* QuickQuest — configure DATA_ENDPOINT after deploying the Google Apps Script. */
-const DATA_ENDPOINT = ""; // Paste your Google Apps Script Web App URL here.
+const DATA_ENDPOINT = "https://script.google.com/macros/s/AKfycbwKrhZn3ZOZ08nAsSOAeeQHUV5O0OFYhtX612oPlNWuAn4q7Iyo3450ikE1WF_zgCVf/exec"; // Google Apps Script Web App URL.
 
 const questions = [
   { round: "ROUND 1 OF 3", title: "Tech check", category: "💻 TECHNOLOGY", prompt: "What is the safest thing to do if you receive an unexpected email asking you to click a link and enter your password?", answers: ["Click the link quickly", "Forward it to all your friends", "Check the sender and report or delete it", "Reply with your password"], correct: 2 },
